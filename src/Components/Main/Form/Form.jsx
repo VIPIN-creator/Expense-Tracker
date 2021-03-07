@@ -6,9 +6,9 @@ import useStyles from './styles';
 import { ExpenseTrackerContext } from "../../../Context/context";
 
 const initialState = {
-  amount : "",
-  category : "",
-  type : "Income",
+  amount : '',
+  category : '',
+  type : 'Income',
   date : new Date()
 };
 
@@ -20,8 +20,8 @@ const Form = () => {
   const {addTransaction} = useContext(ExpenseTrackerContext);
 
   const createTransaction = () => {
-
-    addTransaction({formData, amount : Number(formData.amount), id: uuidv4() });
+   
+    addTransaction({...formData, amount : Number(formData.amount), id: uuidv4() });
     setformData(initialState);
   };
 

@@ -7,13 +7,13 @@ import { ExpenseTrackerContext } from "../../../Context/context";
 
 const List = () => {
   const classes = useStyles();
-  const transactions = [
-      { id : 1, type: 'Income', category: 'business', amount: '50', date: "Sun Feb 21"  },
-      { id : 2, type: 'Expense', category: 'Pets', amount: '50', date: "Sun Feb 21"  },
-      { id : 3, type: 'Income', category: 'Salary', amount: '50', date: "Sun Feb 21"  }
-  ];
+  // const transactions = [
+  //     { id : 1, type: 'Income', category: 'business', amount: '50', date: "Sun Feb 21"  },
+  //     { id : 2, type: 'Expense', category: 'Pets', amount: '50', date: "Sun Feb 21"  },
+  //     { id : 3, type: 'Income', category: 'Salary', amount: '50', date: "Sun Feb 21"  }
+  // ];
 
-  const {deleteTransaction} = useContext(ExpenseTrackerContext);
+  const {deleteTransaction, transactions} = useContext(ExpenseTrackerContext);
 
   console.log(deleteTransaction);
 
@@ -29,7 +29,7 @@ const List = () => {
             </ListItemAvatar>
             <ListItemText primary={transaction.category} secondary={`$${transaction.amount} - ${transaction.date}`} />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick="">
+              <IconButton edge="end" aria-label="delete" onClick={() => deleteTransaction(transaction.id)}>
                 <Delete />
               </IconButton>
             </ListItemSecondaryAction>
