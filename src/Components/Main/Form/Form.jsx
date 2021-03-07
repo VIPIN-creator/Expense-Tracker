@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import useStyles from './styles';
 import { ExpenseTrackerContext } from "../../../Context/context";
+import { incomeCategories, expenseCategories } from "../../../Constants/categories";
 
 const initialState = {
   amount : '',
@@ -18,6 +19,8 @@ const Form = () => {
   const [formData, setformData] = useState(initialState);
 
   const {addTransaction} = useContext(ExpenseTrackerContext);
+
+  const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories;
 
   const createTransaction = () => {
    
@@ -45,8 +48,7 @@ const Form = () => {
         <FormControl fullWidth>
           <InputLabel>Category</InputLabel>
           <Select value = {formData.category} onChange = { (e) => setformData({...formData, category : e.target.value}) } >
-          <MenuItem value="Bussines">Bussines</MenuItem>
-            <MenuItem value="Salary">Salary</MenuItem>
+          {selectedCategories.map((c) => <MenuItem key = {c.type} value = {c.type}>{c.type}</MenuItem> )}
           </Select>
         </FormControl>
       </Grid>
