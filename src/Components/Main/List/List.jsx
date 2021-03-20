@@ -15,7 +15,7 @@ const List = () => {
 
   const {deleteTransaction, transactions} = useContext(ExpenseTrackerContext);
 
-  console.log(deleteTransaction);
+  // console.log(deleteTransaction);
 
   return (
     <MUIList dense={false} className={classes.list}>
